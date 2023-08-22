@@ -1,5 +1,3 @@
-NOTE: This is an opinionated fork of the official Account Factory for Terraform repository, not an official AWS-supported repository. This template is designed specifically for use with Terraform Cloud, github.com, and Hashicorp-linked Terraform Cloud accounts.
-
 # AWS Control Tower Account Factory for Terraform 
 AWS Control Tower Account Factory for Terraform (AFT) follows a GitOps model to automate the processes of account provisioning and account updating in AWS Control Tower. You'll create an *account request* Terraform file, which provides the necessary input that triggers the AFT workflow for account provisioning.
 

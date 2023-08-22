@@ -41,8 +41,8 @@ resource "aws_organizations_organizational_unit" "production" {
 }
 
 # AWS Service Quota increase from 10 -> 100 accounts
-resource "aws_servicequotas_service_quota" "maximum_accounts" {
-  quota_code = "L-29A0C5DF"
-  service_code = "organizations"
-  value = 100
-}
+# resource "aws_servicequotas_service_quota" "maximum_accounts" {
+#   quota_code = "L-29A0C5DF"
+#   service_code = "organizations"
+#   value = 100
+# }

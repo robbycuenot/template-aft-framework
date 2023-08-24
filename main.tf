@@ -40,6 +40,37 @@ resource "aws_organizations_organizational_unit" "production" {
   parent_id = data.aws_organizations_organization.current_organization.roots[0].id
 }
 
+resource "aws_iam_user" "terraform_organizations_read_only" {
+  name = "terraform_organizations_read_only"
+}
+
+resource "aws_iam_user_policy_attachment" "attach-user" {
+  user = aws_iam_user.terraform_organizations_read_only.name
+  policy_arn = data.aws_iam_policy.AWSOrganizationsReadOnlyAccess.arn
+}
+
+resource "aws_iam_access_key" "terraform_organizations_read_only" {
+  user = aws_iam_user.terraform_organizations_read_only.name
+}
+
+resource "tfe_variable" "organizations_read_only_access_key_id" {
+  key = "organizations_read_only_access_key_id"
+  value = aws_iam_access_key.terraform_organizations_read_only.id
+  category = "terraform"
+  description = "AWS_ACCESS_KEY_ID for Organization R/O Account"
+  variable_set_id = data.tfe_variable_set.aft.id
+  sensitive = false
+}
+
+resource "tfe_variable" "organizations_read_only_secret_access_key" {
+  key = "organizations_read_only_secret_access_key"
+  value = aws_iam_access_key.terraform_organizations_read_only.secret
+  category = "terraform"
+  description = "AWS_SECRET_ACCESS_KEY for Organization R/O Account"
+  variable_set_id = data.tfe_variable_set.aft.id
+  sensitive = true
+}
+
 # AWS Service Quota increase from 10 -> 100 accounts
 # resource "aws_servicequotas_service_quota" "maximum_accounts" {
 #   quota_code = "L-29A0C5DF"

@@ -1,5 +1,7 @@
 data "aws_organizations_organization" "current_organization" {}
 
+data "aws_partition" "current" {}
+
 data "aws_region" "current" {}
 
 data "aws_iam_policy" "AWSOrganizationsReadOnlyAccess" {

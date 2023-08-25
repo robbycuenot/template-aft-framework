@@ -2,7 +2,7 @@
 # SPDX-License-Identifier: Apache-2.0
 
 module "aft" {
-  source = "github.com/aws-ia/terraform-aws-control_tower_account_factory?ref=1.10.3"
+  source = "github.com/aws-ia/terraform-aws-control_tower_account_factory?ref=1.10.4"
   # Required Vars
   ct_management_account_id    = var.ct_management_account_id
   log_archive_account_id      = var.log_archive_account_id
@@ -76,4 +76,12 @@ resource "tfe_variable" "organizations_read_only_secret_access_key" {
 #   quota_code = "L-29A0C5DF"
 #   service_code = "organizations"
 #   value = 100
+# }
+
+# AWS Service Quota increase from 1 build -> 25 builds
+# resource "aws_servicequotas_service_quota" "codebuild_concurrency" {
+#   provider = aws.aft_management
+#   quota_code = "L-2DC20C30"
+#   service_code = "codebuild"
+#   value = 25
 # }

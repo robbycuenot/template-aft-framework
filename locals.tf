@@ -6,4 +6,6 @@ locals {
   github_identifier = data.tfe_workspace.current_workspace.vcs_repo["0"].identifier
   github_identifier_split = split("/", local.github_identifier)
   github_owner = local.github_identifier_split[0]
+  
+  aft_session_name = "AWSAFT-Session"
 }

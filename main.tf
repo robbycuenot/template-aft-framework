@@ -72,16 +72,24 @@ resource "tfe_variable" "organizations_read_only_secret_access_key" {
 }
 
 # AWS Service Quota increase from 10 -> 100 accounts
-# resource "aws_servicequotas_service_quota" "maximum_accounts" {
-#   quota_code = "L-29A0C5DF"
-#   service_code = "organizations"
-#   value = 100
-# }
+resource "aws_servicequotas_service_quota" "maximum_accounts" {
+  quota_code = "L-29A0C5DF"
+  service_code = "organizations"
+  value = 100
+
+  lifecycle {
+    ignore_changes = all
+  }
+}
 
 # AWS Service Quota increase from 1 build -> 25 builds
-# resource "aws_servicequotas_service_quota" "codebuild_concurrency" {
-#   provider = aws.aft_management
-#   quota_code = "L-2DC20C30"
-#   service_code = "codebuild"
-#   value = 25
-# }
+resource "aws_servicequotas_service_quota" "codebuild_concurrency" {
+  provider = aws.aft_management
+  quota_code = "L-2DC20C30"
+  service_code = "codebuild"
+  value = 25
+
+  lifecycle {
+    ignore_changes = all
+  }
+}

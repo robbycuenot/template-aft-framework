@@ -63,6 +63,10 @@ variable "terraform_aft_token" {
   description = "Terraform AFT Team API Token"
 }
 
+variable "terraform_workloads_org_name" {
+  description = "Terraform Workloads Organization Name"
+}
+
 variable "terraform_workloads_token" {
   description = "Terraform AFT (Workloads) Team API Token"
 }

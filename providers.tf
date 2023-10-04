@@ -1,5 +1,5 @@
 provider "tfe" {
-  token    = var.terraform_token
+  token    = var.terraform_aft_token
 }
 
 provider "aws" {

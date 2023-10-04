@@ -59,8 +59,12 @@ variable "repo_aft_global_customizations" {
   description = "Repository for AFT Global Customizations"
 }
 
-variable "terraform_token" {
-  description = "Terraform User API Token"
+variable "terraform_aft_token" {
+  description = "Terraform AFT Team API Token"
+}
+
+variable "terraform_workloads_token" {
+  description = "Terraform AFT (Workloads) Team API Token"
 }
 
 variable "TFC_WORKSPACE_SLUG" {

@@ -18,7 +18,7 @@ module "aft" {
   account_provisioning_customizations_repo_name = var.repo_aft_account_provisioning_customizations
   # TF Vars
   terraform_distribution = "tfc"
-  terraform_token        = var.terraform_token
+  terraform_token        = var.terraform_aft_token
   terraform_org_name     = local.tfc_current_organization_name
   # AFT Feature Flags
   aft_feature_delete_default_vpcs_enabled = true
